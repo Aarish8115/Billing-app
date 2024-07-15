@@ -38,8 +38,8 @@
           <td>{{row["amount"]}}</td>
 
           <td>
-            <form action="">
-              <input type="hidden" value="{{row['list_id']}}" name="user_id" />
+            <form action="/receipts/{{row['list_id']}}">
+              <input type="hidden" value="{{row['list_id']}}" name="list_id" />
               <button type="submit" class="btn btn-dark">Details</button>
             </form>
           </td>

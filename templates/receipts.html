@@ -49,11 +49,17 @@
         <tbody class="table-group-divider">
           {% for row in receipts_list %}
           <tr>
-            {% for item in row %}
-            <td>{{row[item]}}</td>
-            {% endfor %}
+            
+            <td>{{row["bill_id"]}}</td>
+            <td>{{row["user_id"]}}</td>
+            <td>{{row["billing_date"]}}</td>
+            <td>{{row["bill_amount"]}}</td>
+            
             <td>
-              <button type="button" class="btn btn-dark">Details</button>
+              <form action="/receipts/{{row['bill_id']}}">
+                <input type="hidden" value="{{row['bill_id']}}" name="list_id" />
+                <button type="submit" class="btn btn-dark">Details</button>
+              </form>
             </td>
           </tr>
           {% endfor %}

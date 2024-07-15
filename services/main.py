@@ -101,10 +101,10 @@ def new_receipt():
     return render_template("newreceipt.html")
 
 @app.route("/receipts/<listId>")
-def receiptDetails(productId):
+def receiptDetails(listId):
     global connection
     cursor=connection.cursor()
-    query=f"SELECT p_id,quantity,subtotal FROM grocery_app.list_items where l_id={productId}"
+    query=f"SELECT p_id,quantity,subtotal FROM grocery_app.list_items where l_id={listId}"
     cursor.execute(query)
     listItems=[]
     for p_id,quantity,subtotal in cursor:
@@ -113,6 +113,7 @@ def receiptDetails(productId):
             "quantity":quantity,
             "subtotal":subtotal
         })
+    return render_template("list_details.html",listItems=listItems)
 
 #users page
 @app.route("/users")
