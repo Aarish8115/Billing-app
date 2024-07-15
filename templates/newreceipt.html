@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/static/styles/style.css" class="css" />
+
+    <title>New Receipt</title>
+  </head>
+  <body>
+    <div class="heading">
+      <a href="/"><i class="fa-solid fa-house"></i></a>
+      <h1>New Receipt</h1>
+    </div>
+    <div class="data new-top">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Product ID</th>
+            <th scope="col">Product</th>
+            <th scope="col">Price</th>
+            <th scope="col">Subtotal</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          <tr>
+            <th scope="row">2</th>
+            <td>Shezwan</td>
+            <td>80</td>
+            <td>160</td>
+            <td>
+              <button type="button" class="btn btn-dark">Quantity</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="total">
+      <div>
+        <h2>Total : 4058</h2>
+      </div>
+      <div>
+        <button type="button" class="btn btn-light">Bill</button>
+      </div>
+    </div>
+  </body>
+</html>
