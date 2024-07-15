@@ -47,44 +47,15 @@
         <tbody class="table-group-divider">
           {% for row in user_list %}
           <tr>
-            <td name="user_id">{{row["user_id"]}}</td>
+            <td>{{row["user_id"]}}</td>
             <td>{{row["user_name"]}}</td>
             <td>{{row["user_mail"]}}</td>
 
             <td>
-              <button
-                type="button"
-                class="btn btn-dark"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal{{row['user_id']}}"
-              >
-                Lists
-              </button>
-              <div
-                class="modal fade"
-                id="exampleModal{{row['user_id']}}"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">
-                        Lists
-                      </h1>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-
-                    <div class="modal-body"></div>
-                  </div>
-                </div>
-              </div>
+              <form action="/users/lists">
+                <input type="hidden" value="{{row['user_id']}}" name="user_id" />
+                <button type="submit" class="btn btn-dark">Lists</button>
+              </form>
             </td>
           </tr>
           {% endfor %}

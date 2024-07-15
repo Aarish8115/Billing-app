@@ -100,6 +100,20 @@ def searchReceipt():
 def new_receipt():
     return render_template("newreceipt.html")
 
+@app.route("/receipts/<listId>")
+def receiptDetails(productId):
+    global connection
+    cursor=connection.cursor()
+    query=f"SELECT p_id,quantity,subtotal FROM grocery_app.list_items where l_id={productId}"
+    cursor.execute(query)
+    listItems=[]
+    for p_id,quantity,subtotal in cursor:
+        listItems.append({
+            "product_id":p_id,
+            "quantity":quantity,
+            "subtotal":subtotal
+        })
+
 #users page
 @app.route("/users")
 def users():
@@ -140,11 +154,22 @@ def searchUser():
     else:
         return redirect("/users")
     
-# @app.route("/users/lists")
-# def userLists():
-#     global connection
-#     userId=request.args.get("user_id")
-#     print(userId)
+@app.route("/users/lists")
+def userLists():
+    global connection
+    userId=request.args.get("user_id")
+    cursor=connection.cursor()
+    query=f"SELECT l_id,date,amount FROM grocery_app.lists where u_id={userId}"
+    cursor.execute(query)
+    ulist=[]
+    for l_id,date,amount in cursor:
+        ulist.append({
+            "list_id":l_id,
+            "date":date,
+            "amount":amount
+        })
+
+    return render_template("user_receipts.html",ulist=ulist)
 
 if __name__=="__main__":
-    app.run(port=3500)
+    app.run()
