@@ -73,7 +73,10 @@
                       ></button>
                     </div>
 
-                    <form action="/update-product/{{row['product_id']}}" method="post">
+                    <form
+                      action="/update-product/{{row['product_id']}}"
+                      method="post"
+                    >
                       <div class="modal-body">
                         <input
                           class="form-control form-control-sm diput"
@@ -83,10 +86,16 @@
                           aria-label=".form-control-sm example"
                         />
 
-                        <select class="form-select diput" name="unit" aria-label="Default select example">
+                        <select
+                          class="form-select diput"
+                          name="unit"
+                          aria-label="Default select example"
+                        >
                           {% for item in unit_list %}
-                          <option value="{{loop.index}}">{{item['unit_name']}}</option>
-                            
+                          <option value="{{loop.index}}">
+                            {{item['unit_name']}}
+                          </option>
+
                           {% endfor %}
                         </select>
 
@@ -162,10 +171,14 @@
                 aria-label=".form-control-sm example"
               />
 
-              <select class="form-select diput" name="unit" aria-label="Default select example">
+              <select
+                class="form-select diput"
+                name="unit"
+                aria-label="Default select example"
+              >
                 {% for item in unit_list %}
                 <option value="{{loop.index}}">{{item['unit_name']}}</option>
-                  
+
                 {% endfor %}
               </select>
 
