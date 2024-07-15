@@ -5,7 +5,7 @@ from users import userList
 from db_connect import connect
 from measure_unit import unit_id,measure_list
 
-
+# creating a flask app
 app=Flask(__name__,template_folder="../templates",static_folder="../static")
 
 connection=connect()
@@ -13,10 +13,12 @@ product_list=productsLists(connection)
 receipts_list=receiptsList(connect())
 user_list=userList(connect())
 
+
+# home page
 @app.route("/")
 def home():
     return render_template("index.html")
-
+# products page
 @app.route("/products")
 def products():
     global connection
@@ -65,6 +67,8 @@ def updateProduct(productId):
     connection.commit()
     return redirect("/products")
 
+
+# receipts page
 @app.route("/receipts")
 def receipts():
     global connection
@@ -96,6 +100,7 @@ def searchReceipt():
 def new_receipt():
     return render_template("newreceipt.html")
 
+#users page
 @app.route("/users")
 def users():
     global connection
@@ -135,7 +140,11 @@ def searchUser():
     else:
         return redirect("/users")
     
-
+# @app.route("/users/lists")
+# def userLists():
+#     global connection
+#     userId=request.args.get("user_id")
+#     print(userId)
 
 if __name__=="__main__":
     app.run(port=3500)
